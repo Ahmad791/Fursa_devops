@@ -4,14 +4,13 @@ pipeline {
     stages {
         stage("Build") {
             steps{
-                sh 'cd Homework2/demo && ./mvnw spring-boot:run'
+                sh 'cd Homework2/demo && mvn clean package'
             }
         }
 
         stage("Save Artifact"){
             steps {
-                sh 'cd Homework2/demo'
-                sh './mvnw spring-boot:run'
+                 archiveArtifacts artifacts: 'Homework2/demo/target/*.jar'
                 }
             }
         
