@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage("Build") {
+        stage("Compile") {
             steps{
                 sh 'cd Homework2/demo && mvn clean package'
             }
@@ -18,11 +18,11 @@ pipeline {
 
     post {
         success {
-            slackSend channel: 'jenkins_closing_task', message: 'Build Success'
+            slackSend channel: 'some channel', message: 'stonks'
         }
          
         failure {
-            slackSend channel: 'jenkins_closing_task', message: 'Build Failed'
+            slackSend channel: 'some channel', message: 'not stonks'
         }
     }
 
