@@ -10,6 +10,7 @@ pipeline {
 
         stage("Save Artifact"){
             steps {
+                sh 'cd Homework2/demo'
                 sh './mvnw spring-boot:run'
                 }
             }
