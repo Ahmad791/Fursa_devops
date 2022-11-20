@@ -4,7 +4,7 @@ pipeline {
   stages{
     stage('Build container') {
       steps {
-        sh 'cd docker build -t flaskapp_web .'
+        sh 'docker build -t flaskapp_web .'
       }
     }
 
