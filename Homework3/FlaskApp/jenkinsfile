@@ -3,22 +3,21 @@ pipeline {
   agent any
   
   stages {
-    stage('Build Docker') {
+    stage('Build container') {
       steps {
         sh 'cd Homework3/FlaskApp && docker build -t flaskapp:$BUILD_NUMBER .'
       }
     }
-     stage('Build Tag') {
+     stage('Tag') {
         steps{
             sh 'docker tag flaskapp:$BUILD_NUMBER ahmad791/flaskapp:$BUILD_NUMBER'
         }
          
      }
 
-    stage('Push Docker') {
+    stage('Push container') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'pass', usernameVariable: 'username')]) {
-                    // the code here can access $pass and $user
                     sh 'docker login -u ${username} -p ${pass}'
                     sh 'docker push ahmad791/flaskapp:$BUILD_NUMBER'
                 }
