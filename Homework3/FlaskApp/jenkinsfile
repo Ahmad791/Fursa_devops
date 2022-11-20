@@ -5,12 +5,12 @@ pipeline {
   stages {
          stage('Git Clone') {
             steps {
-                git url:"https://github.com/MaryamWahbi1/Docker-Final-Task.git", branch:'master'
+                git url:"https://github.com/Ahmad791/Fursa_devops.git", branch:'main'
             }
         }
     stage('Build Docker') {
       steps {
-        sh 'ls && cd Homework3/FlaskApp && sudo docker build -t flaskapp:$BUILD_NUMBER .'
+        sh 'cd Homework3/FlaskApp && sudo docker build -t flaskapp:$BUILD_NUMBER .'
       }
     }
      stage('Build Tag') {
