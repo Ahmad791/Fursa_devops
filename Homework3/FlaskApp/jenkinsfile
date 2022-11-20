@@ -4,7 +4,7 @@ pipeline {
   stages{
     stage('Build container') {
       steps {
-        sh 'docker build -t flaskapp_web .'
+        sh 'docker-compose up'
       }
     }
 
@@ -13,7 +13,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'pass', usernameVariable: 'username')]) {
                     // the code here can access $pass and $user
                     sh 'docker login -u ${username} -p ${pass}'
-                    sh 'docker push Dockerappteastflask'
+                    sh 'docker push flaskapp_web'
                 }
             }
         }
