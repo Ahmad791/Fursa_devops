@@ -8,7 +8,7 @@ pipeline {
         sh 'cd Homework3/FlaskApp && docker build -t flaskapp:$BUILD_NUMBER .'
       }
     }
-     stage('Tag') {
+     stage('Add Tag') {
         steps{
             sh 'docker tag flaskapp:$BUILD_NUMBER ahmad791/flaskapp:$BUILD_NUMBER'
         }
