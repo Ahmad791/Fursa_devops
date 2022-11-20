@@ -4,7 +4,7 @@ pipeline {
   stages{
     stage('Build container') {
       steps {
-        sh 'docker-compose up'
+        sh 'cd Homework3/FlaskApp && docker-compose up'
       }
     }
 
