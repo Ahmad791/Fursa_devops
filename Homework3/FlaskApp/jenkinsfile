@@ -3,14 +3,9 @@ pipeline {
   agent any
   
   stages {
-         stage('Git Clone') {
-            steps {
-                git url:"https://github.com/Ahmad791/Fursa_devops.git", branch:'main'
-            }
-        }
     stage('Build Docker') {
       steps {
-        sh 'cd Homework3/FlaskApp && sudo docker build -t flaskapp:$BUILD_NUMBER .'
+        sh 'sudo su && cd Homework3/FlaskApp && docker build -t flaskapp:$BUILD_NUMBER .'
       }
     }
      stage('Build Tag') {
