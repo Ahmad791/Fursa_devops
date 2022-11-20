@@ -3,7 +3,11 @@ pipeline {
   agent any
   
   stages {
-        
+         stage('Git Clone') {
+            steps {
+                git url:"https://github.com/MaryamWahbi1/Docker-Final-Task.git", branch:'master'
+            }
+        }
     stage('Build Docker') {
       steps {
         sh 'cd Homework3/FlaskApp && sudo docker build -t flaskapp:$BUILD_NUMBER .'
