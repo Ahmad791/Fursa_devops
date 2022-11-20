@@ -1,22 +1,31 @@
 pipeline {
 
   agent any
-  stages{
-    stage('Build container') {
+  
+  stages {
+        
+    stage('Build Docker') {
       steps {
-        sh 'cd Homework3/FlaskApp && sudo docker build -t flaskapp_web:$BUILD_NUMBER .'
+        sh 'docker build -t flaskapp:$BUILD_NUMBER .'
       }
     }
+     stage('Build Tag') {
+        steps{
+            sh 'docker tag flaskapp:$BUILD_NUMBER ahmad791/flaskapp:$BUILD_NUMBER'
+        }
+         
+     }
 
-    stage('Publish container') {
+    stage('Push Docker') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'pass', usernameVariable: 'username')]) {
                     // the code here can access $pass and $user
                     sh 'docker login -u ${username} -p ${pass}'
-                    sh 'docker push flaskapp_webflaskapp_web:$BUILD_NUMBER'
+                    sh 'docker push ahmad12abed/bitcoin:$BUILD_NUMBER'
                 }
             }
         }
     }
-}
+
     
+}
