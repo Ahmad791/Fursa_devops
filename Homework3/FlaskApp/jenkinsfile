@@ -6,7 +6,7 @@ pipeline {
         
     stage('Build Docker') {
       steps {
-        sh 'cd Homework3/FlaskApp && docker build -t flaskapp:$BUILD_NUMBER .'
+        sh 'cd Homework3/FlaskApp && sudo docker build -t flaskapp:$BUILD_NUMBER .'
       }
     }
      stage('Build Tag') {
