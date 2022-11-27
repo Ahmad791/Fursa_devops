@@ -18,3 +18,7 @@ to run the code all you need is java 17 and maven installed. (you can install th
 Alternatively if you want to test it without making a jar every time you can just run: 
 
     cd Homework2/demo && ./mvnw spring-boot:run
+
+Homework3-------------
+
+In Homework 3 we were asked to make a flask app and connect it to a redis database, each in their own container running on the same docker using docker-compose. Putting all this in CI/CD cycle using jenkins and publishing the container on Dockerhub.
