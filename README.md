@@ -22,3 +22,12 @@ Alternatively if you want to test it without making a jar every time you can jus
 Homework3-------------
 
 In Homework 3 we were asked to make a flask app and connect it to a redis database, each in their own container running on the same docker using docker-compose. Putting all this in CI/CD cycle using jenkins and publishing the container on Dockerhub.
+
+Homework4-------------
+
+In this homework we  were asked to dockerize the 2nd and 3rd homework and run them on minikube with ingress.
+To run the code all you have to do is put the following commands in your terminal:
+    cd Homework4
+    minikube addons enable ingress
+    kubectl apply -f .
+    minikube tunnel 
