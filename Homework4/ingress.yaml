@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: bingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /bitcoin
+            pathType: Prefix
+            backend:
+              service:
+                name: flaskapp-service
+                port:
+                  number: 5000
+    - http:
+        paths:
+          - path: /ynet
+            pathType: Prefix
+            backend:
+              service:
+                name: ynet-service
+                port:
+                  number: 7000

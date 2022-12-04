@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: ynet 
+  labels: 
+    role: deployment
+
+spec:
+  replicas: 1
+  
+  selector:
+    matchLabels:
+      app: ynet
+
+  template:
+    metadata:
+      labels:
+        app: ynet
+    spec:
+      containers: 
+      - name: ynet
+        image: ahmad791/ynet:latest
+        ports:
+        - containerPort: 7000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ynet-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 7000
+  selector:
+    app: ynet
